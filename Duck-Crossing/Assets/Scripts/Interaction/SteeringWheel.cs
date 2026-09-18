@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SteeringWheel : MonoBehaviour
+public class SteeringWheel : Interactable
 {
 
     /// The minimum and maximum rotation of the wheel. [-180, 180]
@@ -42,13 +42,13 @@ public class SteeringWheel : MonoBehaviour
 
 
 
-    public void Grab()
+    public override void OnInteraction()
     {
         grabbed = true;
         dist = Vector2.Distance(Camera.main.WorldToScreenPoint(transform.position), Input.mousePosition);
     }
 
-    public void Release()
+    public override void OnRelease()
     {
         grabbed = false;
     }

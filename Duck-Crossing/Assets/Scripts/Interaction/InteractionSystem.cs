@@ -25,7 +25,7 @@ public class InteractionSystem : MonoBehaviour
     /// Releases the current interaction and invokes the release method.
     public static void Release()
     {
-        lastInteractedObject.GetComponent<Interactable>().OnRelease.Invoke();
+        lastInteractedObject.GetComponent<Interactable>().OnRelease();
         lastInteractedObject = null;
     }
 
@@ -50,7 +50,7 @@ public class InteractionSystem : MonoBehaviour
             if (interactable)
             {
                 lastInteractedObject = MouseCollisions[0].gameObject;
-                interactable.OnInteraction.Invoke();
+                interactable.OnInteraction();
             }
         }
 
@@ -83,7 +83,7 @@ public class InteractionSystem : MonoBehaviour
         if (MouseCollisions.Length > 0 && MouseCollisions[0].gameObject.tag == "Interactable")
             cursorSprite.sprite = hoverCursor;
 
-        if (lastInteractedObject)
+        if (lastInteractedObject && lastInteractedObject.tag == "Interactable")
             cursorSprite.sprite = grabCursor;
     }
 

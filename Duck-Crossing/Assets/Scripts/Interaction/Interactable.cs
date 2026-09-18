@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
 
-    public UnityEvent OnInteraction, OnRelease;
+    public abstract void OnInteraction();
+    public abstract void OnRelease();
 
 }
