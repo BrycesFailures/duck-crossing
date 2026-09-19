@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour
     public static Vector3 Force = Vector3.zero;
     float position = 0.0f;
     Transform world;
+    public Transform carButt;
 
     private void Awake()
     {
@@ -36,12 +37,18 @@ public class CarController : MonoBehaviour
             progressCar.localPosition.z
         );
 
-        position += SteeringWheel.Angle * TurnSpeed * Time.deltaTime;
+        position -= SteeringWheel.Angle * TurnSpeed * Time.deltaTime;
 
         world.position = new Vector3(
-            Mathf.Clamp(position, Limits.x, Limits.y), 
+            Mathf.Clamp(-position, Limits.x, Limits.y), 
             transform.position.y, 
             transform.position.z
+        );
+
+        carButt.localPosition = new Vector3(
+            position / 2.6f * 0.7f,
+            carButt.localPosition.y,
+            carButt.localPosition.z
         );
 
         //Force = Vector3.zero;
