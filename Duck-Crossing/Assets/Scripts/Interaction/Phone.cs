@@ -150,7 +150,14 @@ public class Phone : Interactable
     {
         if (messages.Count > 0) hint.text = messages[0].response.ToUpper();
         response.text = currentResponse;
+        marker.anchoredPosition = new Vector2(
+            markerStart + response.preferredWidth,
+            marker.anchoredPosition.y
+        );
     }
+
+    RectTransform marker;
+    float markerStart = 0.0f;
     // End Typing Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -173,6 +180,8 @@ public class Phone : Interactable
 
         hint = GetChild("Hint").GetComponent<Text>();
         response = GetChild("Response").GetComponent<Text>();
+        marker = GetChild("Marker").GetComponent<RectTransform>();
+        markerStart = marker.anchoredPosition.x;
 
         keyboard = GetChild("Keyboard").GetComponent<RectTransform>();
         UpdateButtons();
@@ -199,13 +208,18 @@ public class Phone : Interactable
             AddMessage(str, Random.value > 0.5f);
         }*/
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            ShuffleButtons();
-
         if (messages.Count > 0 && messages[0].type == "response")
             UpdateResponse();
 
         Finished = messages.Count == 0;
+
+        RawImage mi = marker.GetComponent<RawImage>();
+        mi.color = new Color(
+            mi.color.r,
+            mi.color.g,
+            mi.color.b,
+            Mathf.Sin(Time.time * 6.0f) * 0.5f + 0.5f
+        );
 
     }
 
