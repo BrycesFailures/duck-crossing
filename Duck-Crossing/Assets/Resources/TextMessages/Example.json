@@ -16,5 +16,23 @@
 		"__comment__" : "The mesasge & sender are not used in a response",
 		"sender" : "",
 		"message" : ""
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "Another!",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "And a fourth while we're at it!",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
 	}
 ]

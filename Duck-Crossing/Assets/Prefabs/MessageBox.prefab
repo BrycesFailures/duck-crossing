@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5956609316449902790}
   - component: {fileID: 8082979064738825125}
   m_Layer: 0
-  m_Name: Message
+  m_Name: MessageBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.42557764, b: 1, a: 1}
+  m_Color: {r: 0.72, g: 0.72, b: 0.72, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
