@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,18 +71,23 @@ public class Phone : Interactable
 
         scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.0f;
 
+        if (!response) AudioSystem.PlaySound("SFX/message");
+
         return obj;
     }
 
     /// Attemps to send the current response, fails if it doesn't match.
     void SendResponse()
     {
-        if (messages.Count > 0 && messages[0].type == "response" && currentResponse == messages[0].response)
+        if (messages.Count > 0 && messages[0].type == "response" && currentResponse == messages[0].response.ToUpper())
         {
-            AddMessage(currentResponse, true);
+            AddMessage(messages[0].response, true);
             messages.RemoveAt(0);
             currentResponse = "";
             fixedCounter = 0;
+        } else
+        {
+            AudioSystem.PlaySound("SFX/wrong");
         }
     }
 
@@ -95,43 +101,72 @@ public class Phone : Interactable
     string currentResponse = "";
 
     RectTransform keyboard;
-    bool capsLock = false;
+    //bool capsLock = true;
     static readonly string[] defaultButtons = new[] {
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
         "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
         "A", "S", "D", "F", "G", "H", "J", "K", "L",
-        "Z", "X", "C", "V", "B", "N", "M",
-        "Send", "Del", "^"
+        "Z", "X", "C", "V", "B", "N", "M", " ",
+        "Send", "Del"
     };
     static readonly string[] defaultButtonsLower = new[] {
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
         "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
         "a", "s", "d", "f", "g", "h", "j", "k", "l",
-        "z", "x", "c", "v", "b", "n", "m",
-        "Send", "Del", "^"
+        "z", "x", "c", "v", "b", "n", "m", " ",
+        "Send", "Del"
     };
-    List<string> buttonValues = new List<string>(defaultButtonsLower);
+    List<string> buttonValues = new List<string>(defaultButtons);
 
     void UpdateButtons()
     {
-        if (!capsLock) buttonValues = new List<string>(defaultButtonsLower);
-        else buttonValues = new List<string>(defaultButtons);
+        //if (!capsLock) buttonValues = new List<string>(defaultButtonsLower);
+        //else buttonValues = new List<string>(defaultButtons);
         for (int i = 0; i < keyboard.childCount; i++) keyboard.GetChild(i).GetChild(0).GetComponent<Text>().text = buttonValues[i];
+    }
+
+    void ShuffleButtons()
+    {
+        string[] shuffle = new string[37];
+        for (int i = 0; i < shuffle.Length; i++)
+            shuffle[i] = defaultButtons[i];
+
+        for (int n = 0; n < 10; n++)
+        for (int i = 0; i < shuffle.Length - 1; i++)
+            if (UnityEngine.Random.value > 0.5f)
+            {
+                string temp = shuffle[i];
+                shuffle[i] = shuffle[i + 1];
+                shuffle[i + 1] = temp;
+            }
+
+        for (int i = 0; i < shuffle.Length; i++)
+            buttonValues[i] = shuffle[i];
+
+        UpdateButtons();
     }
 
     void UpdateResponse()
     {
-        if (messages.Count > 0) hint.text = messages[0].response;
+        if (messages.Count > 0) hint.text = messages[0].response.ToUpper();
         response.text = currentResponse;
     }
     // End Typing Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
+    public static bool Finished = false;
+
+
+
     private void Awake()
     {
         try { messages = new List<TextMessage>(LoadMessages(MessageListName)); }
-        catch { Debug.LogError("Failed to Load Text Message JSON: Resourses/TextMessages/" + MessageListName); Destroy(this); }
+        catch (Exception e) {
+            Debug.LogError(e.Message);
+            Debug.LogError("Failed to Load Text Message JSON: Resourses/TextMessages/" + MessageListName);
+            Destroy(this); 
+        }
 
         scrollView = GetChild("Scroll View");
         content = GetChild("Content");
@@ -148,6 +183,8 @@ public class Phone : Interactable
         }
 
         UpdateResponse();
+
+        AudioSystem.PlaySound("SFX/vibrate");
     }
 
 
@@ -162,15 +199,20 @@ public class Phone : Interactable
             AddMessage(str, Random.value > 0.5f);
         }*/
 
+        if (Input.GetKeyDown(KeyCode.Space))
+            ShuffleButtons();
+
         if (messages.Count > 0 && messages[0].type == "response")
             UpdateResponse();
+
+        Finished = messages.Count == 0;
 
     }
 
     private void FixedUpdate()
     {
 
-        if ((fixedCounter += Mathf.RoundToInt(Random.value)) >= 50 && messages.Count > 0 && messages[0].type == "message")
+        if ((fixedCounter += Mathf.RoundToInt(UnityEngine.Random.value)) >= 50 && messages.Count > 0 && messages[0].type == "message")
         {
             AddMessage(messages[0].message, false);
             messages.RemoveAt(0);
@@ -193,16 +235,15 @@ public class Phone : Interactable
                     currentResponse = currentResponse.Substring(0, currentResponse.Length - 1);
                 break;
 
-            case "CapsLock":
-                capsLock = !capsLock;
-                UpdateButtons();
-                break;
-
             default:
-                currentResponse += buttonValues[int.Parse(button.name)];
+                if (response.preferredWidth < 28.0f) currentResponse += buttonValues[int.Parse(button.name)];
+                if (UnityEngine.Random.value < 0.15f && response.preferredWidth < 28.0f)
+                    currentResponse += buttonValues[int.Parse(button.name)];
                 UpdateResponse();
                 break;
         }
+        ShuffleButtons();
+        AudioSystem.PlaySound("SFX/type");
     }
 
 

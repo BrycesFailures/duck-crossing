@@ -1,0 +1,74 @@
+[
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "You have just become the lucky winner of $400!!! Please respond with your credit card information for us to send you your money.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "response",
+		"response" : "Are you real",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "Yes we are real. Please respond with your credit card information for us to send you your money.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "response",
+		"response" : "Ok",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	},
+	{
+		"type" : "response",
+		"response" : "8493 6104 1037",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "Money incoming.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "...",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : ">:]",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	}
+]

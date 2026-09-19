@@ -61,6 +61,9 @@ public class InteractionSystem : MonoBehaviour
         // cursor whatnot
         CursorStuff();
 
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
     }
 
 

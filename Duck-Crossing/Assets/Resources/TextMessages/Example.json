@@ -34,5 +34,14 @@
 		"__comment__" : "The response & hint are not used in a mesasge",
 		"response" : "",
 		"hint" : false
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "Goodbye!",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
 	}
 ]
