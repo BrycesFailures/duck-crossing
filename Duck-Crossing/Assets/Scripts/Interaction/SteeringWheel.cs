@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SteeringWheel : Interactable
 {
@@ -34,7 +33,7 @@ public class SteeringWheel : Interactable
             // stick the cursor to the wheel
             Vector2 sp = Camera.main.WorldToScreenPoint(transform.position);
             Vector2 constrained = sp + ClampMagnitude((Vector2)Input.mousePosition - sp, dist * 0.8f, dist * 1.2f);
-            Mouse.current.WarpCursorPosition(constrained);
+            //Mouse.current.WarpCursorPosition(constrained);
         }
         pm = Input.mousePosition;
 
