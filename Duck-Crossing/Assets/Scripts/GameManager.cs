@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         Phone.Finished = false;
         LevelTime.time = 0.0f;
         Fade();
-        SceneManager.LoadScene(currentLevel);
+        StartCoroutine("LevelRestart");
     }
 
     public void retryLastLevel()
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         LevelTime.time = 0.0f;
         Console.WriteLine("Current level: " +  currentLevel);
         Fade();
-        SceneManager.LoadScene(currentLevel);
+        StartCoroutine("LevelRestart");
     }
 
     IEnumerator LevelWin()
@@ -75,6 +75,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("GameOver");
+    }
+
+    IEnumerator LevelRestart()
+    {
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(currentLevel);
     }
 
     void Fade()
