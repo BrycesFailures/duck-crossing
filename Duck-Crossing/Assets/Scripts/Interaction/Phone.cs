@@ -281,7 +281,7 @@ public class Phone : Interactable
                 UpdateResponse();
                 break;
         }
-        ShuffleButtons();
+        // ShuffleButtons();
         AudioSystem.PlaySound("SFX/type");
     }
 
