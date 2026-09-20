@@ -18,7 +18,7 @@ public class FadeIn : MonoBehaviour
             sr.color.r,
             sr.color.g,
             sr.color.b,
-            1.0f - Time.time
+            1.0f - LevelTime.time
         );
     }
 

@@ -8,7 +8,10 @@ public class Seagull : Interactable
     public int NumClicks = 5;
     int clicks = 0;
 
+    float timealive = 0.0f;
+
     public Sprite regular, angry;
+    public GameObject particles;
 
     Vector3 scale;
     Vector3 velocity = Vector3.zero;
@@ -17,6 +20,7 @@ public class Seagull : Interactable
     private void Awake()
     {
         scale = transform.localScale;
+        transform.localScale = Vector3.zero;
     }
 
     private void Update()
@@ -26,6 +30,10 @@ public class Seagull : Interactable
             velocity += Physics.gravity * Time.deltaTime;
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime);
             transform.position += Vector3.forward * Time.deltaTime * 10.0f;
+        } else
+        {
+            transform.localScale = Vector3.Lerp(Vector3.zero, scale, Mathf.Clamp01(timealive * 2.0f));
+            timealive += Time.deltaTime;
         }
         transform.position += velocity * Time.deltaTime;
         transform.rotation *= Quaternion.Euler(0.0f, 0.0f, angular * Time.deltaTime);
@@ -41,6 +49,8 @@ public class Seagull : Interactable
         AudioSystem.PlaySound("SFX/squak" + index);
 
         GetComponent<SpriteRenderer>().sprite = angry;
+
+        Destroy(Instantiate(particles, transform.position - Vector3.forward, Quaternion.identity), 5.0f);
 
         StartCoroutine("Shrink");
     }

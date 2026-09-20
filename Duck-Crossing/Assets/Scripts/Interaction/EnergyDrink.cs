@@ -12,6 +12,7 @@ public class EnergyDrink : Interactable
     public override void OnRelease()
     {
         Camera.main.GetComponent<VisualEffect>().Target = 0.0f;
+        AudioSystem.PlaySound("SFX/drink");
         Destroy(gameObject);
     }
 }

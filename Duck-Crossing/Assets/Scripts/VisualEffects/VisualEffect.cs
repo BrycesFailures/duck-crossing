@@ -8,6 +8,7 @@ public class VisualEffect : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float Amount = 1.0f;
     public float Target = 1.0f;
+    public float Time_ = 120.0f;
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -21,7 +22,7 @@ public class VisualEffect : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Amount += Time.deltaTime / 120.0f;
+            Amount += Time.deltaTime / Time_;
             if (Target < Amount) Amount -= Time.deltaTime;
         }
         Amount = Mathf.Clamp01(Amount);
