@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level1Controller : MonoBehaviour
+public class Level2Controller : MonoBehaviour
 {
 
     bool ended = false;
 
-    public GameObject seagull;
+    public GameObject seagull1;
+    public GameObject seagull2;
 
     private void Update()
     {
-        if (!ended && LevelTime.time > 45.0f)
+        if (!ended && LevelTime.time > 40.0f)
         {
-            if (seagull) seagull.SetActive(true);
+            if (seagull1) seagull1.SetActive(true);
+        }
+
+        if (!ended && LevelTime.time > 80.0f)
+        {
+            if (seagull2) seagull2.SetActive(true);
         }
 
         if (Phone.Finished && !ended)

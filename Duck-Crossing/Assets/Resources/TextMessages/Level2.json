@@ -1,0 +1,65 @@
+[
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "This is Uncle Lester, please come swing by the house asap. Your grandmother locked herself her closet.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "response",
+		"response" : "What",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "Yeah, um, we called a locksmith but she's still really worried. I think you being there would help.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "response",
+		"response" : "Kind of Busy",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "I didn't strike you as the unempathetic type.",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "message",
+		"sender" : "John Doe",
+		"message" : "You know what, you're not invited to my birthday party! >:[",
+
+		"__comment__" : "The response & hint are not used in a mesasge",
+		"response" : "",
+		"hint" : false
+	},
+	{
+		"type" : "response",
+		"response" : "Ok Bye",
+		"hint" : true,
+
+		"__comment__" : "The mesasge & sender are not used in a response",
+		"sender" : "",
+		"message" : ""
+	}
+]
