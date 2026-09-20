@@ -21,6 +21,7 @@ public class Seagull : Interactable
     {
         scale = transform.localScale;
         transform.localScale = Vector3.zero;
+        AudioSystem.PlaySound("SFX/squak0");
     }
 
     private void Update()

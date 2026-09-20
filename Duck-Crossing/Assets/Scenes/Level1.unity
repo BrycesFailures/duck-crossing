@@ -2935,7 +2935,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a067a0fe397d6044f91fc141647ce60c, type: 3}
   m_Name: 
@@ -3244,7 +3244,7 @@ Transform:
   - {fileID: 888578515}
   - {fileID: 1880106797}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &597243835
 GameObject:
@@ -4059,7 +4059,7 @@ Transform:
   m_Children:
   - {fileID: 1189505545}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &727508380
 MonoBehaviour:
@@ -7187,8 +7187,69 @@ Transform:
   - {fileID: 1693737921}
   - {fileID: 1871325504}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1270517861
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5646435705212936162, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_Name
+      value: Seagull
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936162, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646435705212936172, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f934b65999c30e74296172a69ebf2766, type: 3}
 --- !u!1 &1314377762
 GameObject:
   m_ObjectHideFlags: 0
@@ -10504,6 +10565,7 @@ GameObject:
   - component: {fileID: 1862214039}
   - component: {fileID: 1862214042}
   - component: {fileID: 1862214044}
+  - component: {fileID: 1862214045}
   - component: {fileID: 1862214040}
   m_Layer: 0
   m_Name: _Main
@@ -10668,14 +10730,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6c2d3a7680d1a4081bdd7db8a5059f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 60
+  TimeLimit: 90
   progressCarSprites:
   - {fileID: 21300000, guid: 6956fad87a4995943bf0e0cf84bb432f, type: 3}
   - {fileID: 21300000, guid: 069034491b5f14745bbae461ac7a6902, type: 3}
   progressStart: 0
   Limits: {x: -2.6, y: 2.6}
   TurnSpeed: 0.01
-  Bumpiness: 1
+  Bumpiness: 0.2
   carButt: {fileID: 91528126}
 --- !u!114 &1862214043
 MonoBehaviour:
@@ -10701,8 +10763,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012bcf6a3c692b4438e9c33ddac8e7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
   phoneController: {fileID: 1871325506}
+--- !u!114 &1862214045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862214036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cec130cf13d8f04fa363123ee6ff991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seagull: {fileID: 1963026072}
 --- !u!1 &1871325502
 GameObject:
   m_ObjectHideFlags: 0
@@ -10778,7 +10852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7eec1652000fb439ce201290826aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Phone
-  MessageListName: Example
+  MessageListName: Level1
   messagePrefab: {fileID: 5130287880858162804, guid: 6486f67d69060ec449ba749802f3faa2, type: 3}
   responsePrefab: {fileID: 2176887991699526253, guid: ef9249d5d48a22c49aef600a78d7a7b4, type: 3}
 --- !u!114 &1871325507
@@ -11708,6 +11782,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1963026072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646435705212936162, guid: f934b65999c30e74296172a69ebf2766, type: 3}
+  m_PrefabInstance: {fileID: 1270517861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996442357
 GameObject:
   m_ObjectHideFlags: 0
