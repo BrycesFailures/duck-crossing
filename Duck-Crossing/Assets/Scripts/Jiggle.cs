@@ -16,7 +16,7 @@ public class Jiggle : MonoBehaviour
 
     private void Awake()
     {
-        pos = transform.position;
+        pos = transform.localPosition;
     }
 
 
@@ -27,7 +27,7 @@ public class Jiggle : MonoBehaviour
         velocity -= velocity * Dampening * Time.deltaTime;
         offset += velocity * Time.deltaTime;
 
-        transform.position = pos + offset;
+        transform.localPosition = pos + offset;
     }
 
 

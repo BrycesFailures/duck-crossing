@@ -7,6 +7,7 @@ public class VisualEffect : MonoBehaviour
     public Shader Shader;
     [Range(0.0f, 1.0f)]
     public float Amount = 1.0f;
+    public float Target = 1.0f;
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -14,6 +15,16 @@ public class VisualEffect : MonoBehaviour
         Material mat = new Material(Shader);
         mat.SetFloat("_Amount", Amount);
         Graphics.Blit(source, destination, mat);
+    }
+
+    private void Update()
+    {
+        if (Application.isPlaying)
+        {
+            Amount += Time.deltaTime / 120.0f;
+            if (Target < Amount) Amount -= Time.deltaTime;
+        }
+        Amount = Mathf.Clamp01(Amount);
     }
 
 }

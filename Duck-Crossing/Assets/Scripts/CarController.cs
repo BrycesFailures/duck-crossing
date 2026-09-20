@@ -15,10 +15,13 @@ public class CarController : MonoBehaviour
     [Header("Not Forwards Stuff")]
     public Vector2 Limits = new Vector2(-2.0f, 2.0f);
     public float TurnSpeed = 0.01f;
+    public float Bumpiness = 1.0f;
     public static Vector3 Force = Vector3.zero;
     float position = 0.0f;
     Transform world;
     public Transform carButt;
+    public static bool Crashed = false;
+    public static bool Finished = false;
 
     private void Awake()
     {
@@ -45,17 +48,17 @@ public class CarController : MonoBehaviour
             transform.position.z
         );
 
+        Crashed = position > Limits.y || position < Limits.x;
+        Finished = Time.time > TimeLimit;
+
         carButt.localPosition = new Vector3(
             position / 2.6f * 0.7f,
             carButt.localPosition.y,
             carButt.localPosition.z
         );
 
-        //Force = Vector3.zero;
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //    Force += Vector3.up * 3.0f;
         Force = Vector3.zero;
-        if (Random.value < Time.deltaTime * 0.1f + Mathf.Abs(world.position.x) * Time.deltaTime)
+        if (Random.value < Time.deltaTime * 0.1f * Bumpiness + Mathf.Abs(world.position.x) * Time.deltaTime * Bumpiness)
         {
             Force += Vector3.up * Random.value * 3.0f;
             Force += Vector3.right * (Random.value * 2.0f - 1.0f);

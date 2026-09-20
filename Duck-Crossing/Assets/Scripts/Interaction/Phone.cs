@@ -92,7 +92,7 @@ public class Phone : Interactable
     }
 
     int fixedCounter = 0;
-    // End of Message Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // End Message Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -162,7 +162,19 @@ public class Phone : Interactable
 
 
 
+    // Animation Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    const float visibleRotation = -13.0f;
+    const float invisibleRotation = 50.0f;
+    float rotation = invisibleRotation;
+    float velocity = 0.0f;
+    float spring = 50.0f;
+    float dampening = 7.0f;
+    // End Animation Stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
     public static bool Finished = false;
+    public static float FinishedTime = -1.0f;
 
 
 
@@ -193,6 +205,8 @@ public class Phone : Interactable
 
         UpdateResponse();
 
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+
         AudioSystem.PlaySound("SFX/vibrate");
     }
 
@@ -211,7 +225,11 @@ public class Phone : Interactable
         if (messages.Count > 0 && messages[0].type == "response")
             UpdateResponse();
 
-        Finished = messages.Count == 0;
+        if (!Finished && messages.Count == 0)
+        {
+            Finished = true;
+            FinishedTime = Time.time;
+        }
 
         RawImage mi = marker.GetComponent<RawImage>();
         mi.color = new Color(
@@ -220,6 +238,13 @@ public class Phone : Interactable
             mi.color.b,
             Mathf.Sin(Time.time * 6.0f) * 0.5f + 0.5f
         );
+
+
+        float target = (Finished && Time.time - FinishedTime > 1.5f) ? invisibleRotation : visibleRotation;
+        velocity += (target - rotation)  * spring * Time.deltaTime;
+        velocity -= velocity * dampening * Time.deltaTime;
+        rotation += velocity * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
 
     }
 
