@@ -11,20 +11,35 @@ public class LevelTutorialController : MonoBehaviour
     {
         if (Phone.Finished && !ended)
         {
-            ended = true;
-            StartCoroutine("Fade");
+            EndLevel();
         }
+    }
+
+    public void EndLevel()
+    {
+        if (!ended) StartCoroutine("Fade", false);
+        ended = true;
+    }
+
+    public void FadeOut()
+    {
+        SpriteRenderer sr = GameObject.Find("FadeIn").GetComponent<SpriteRenderer>();
+        sr.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        if (!ended) StartCoroutine("Fade", true);
+        ended = true;
     }
 
     IEnumerator NextLevel()
     {
         yield return new WaitForSeconds(1.0f);
+        GameManager.currentLevel++;
         OtherSceneManager.NextScene();
     }
 
-    IEnumerator Fade()
+    IEnumerator Fade(bool title)
     {
-        yield return new WaitForSeconds(2.0f);
+        if (!title) yield return new WaitForSeconds(2.0f);
+        else yield return new WaitForEndOfFrame();
         GameObject.Find("FadeIn").GetComponent<FadeIn>().StartFadeOut();
         StartCoroutine("NextLevel");
     }
