@@ -27,6 +27,7 @@ public class Phone : Interactable
     /// The list of messages deserialized from the JSON.
     /// This is NOT the list of UI elements.
     List<TextMessage> messages = null;
+    string lastMessage = "";
 
     /// Utility function for lazy referencing.
     private RectTransform GetChild(string name)
@@ -72,6 +73,8 @@ public class Phone : Interactable
         scrollView.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.0f;
 
         if (!response) AudioSystem.PlaySound("SFX/message");
+
+        lastMessage = message;
 
         return obj;
     }
@@ -240,18 +243,21 @@ public class Phone : Interactable
         );
 
 
-        float target = (Finished && Time.time - FinishedTime > 1.5f) ? invisibleRotation : visibleRotation;
-        velocity += (target - rotation)  * spring * Time.deltaTime;
-        velocity -= velocity * dampening * Time.deltaTime;
-        rotation += velocity * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+        if (Time.frameCount > 10)
+        {
+            float target = (Finished && Time.time - FinishedTime > 1.5f) ? invisibleRotation : visibleRotation;
+            velocity += (target - rotation) * spring * Time.deltaTime;
+            velocity -= velocity * dampening * Time.deltaTime;
+            rotation += velocity * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+        }
 
     }
 
     private void FixedUpdate()
     {
 
-        if ((fixedCounter += Mathf.RoundToInt(UnityEngine.Random.value)) >= 50 && messages.Count > 0 && messages[0].type == "message")
+        if ((fixedCounter += Mathf.RoundToInt(UnityEngine.Random.value)) >= Mathf.Max(lastMessage.Length * 3, 50) && messages.Count > 0 && messages[0].type == "message")
         {
             AddMessage(messages[0].message, false);
             messages.RemoveAt(0);
