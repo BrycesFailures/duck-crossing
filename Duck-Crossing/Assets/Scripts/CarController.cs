@@ -33,9 +33,9 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        progressCarRenderer.sprite = progressCarSprites[Mathf.FloorToInt(Time.time) % 2];
+        progressCarRenderer.sprite = progressCarSprites[Mathf.FloorToInt(LevelTime.time) % 2];
         progressCar.localPosition = new Vector3(
-            progressStart - 2.0f * progressStart * Time.time / TimeLimit,
+            progressStart - 2.0f * progressStart * LevelTime.time / TimeLimit,
             progressCar.localPosition.y, 
             progressCar.localPosition.z
         );
@@ -49,7 +49,7 @@ public class CarController : MonoBehaviour
         );
 
         Crashed = position > Limits.y || position < Limits.x;
-        Finished = Time.time > TimeLimit;
+        Finished = LevelTime.time > TimeLimit;
 
         carButt.localPosition = new Vector3(
             position / 2.6f * 0.75f,
