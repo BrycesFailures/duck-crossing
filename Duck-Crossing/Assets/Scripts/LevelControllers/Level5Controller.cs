@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level2Controller : MonoBehaviour
+public class Level5Controller : MonoBehaviour
 {
 
     bool ended = false;

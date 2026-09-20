@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level2Controller : MonoBehaviour
+public class Level3Controller : MonoBehaviour
 {
 
     bool ended = false;
@@ -12,12 +12,12 @@ public class Level2Controller : MonoBehaviour
 
     private void Update()
     {
-        if (!ended && LevelTime.time > 30.0f)
+        if (!ended && LevelTime.time > 10.0f)
         {
             if (seagull1) seagull1.SetActive(true);
         }
 
-        if (!ended && LevelTime.time > 60.0f)
+        if (!ended && LevelTime.time > 20.0f)
         {
             if (seagull2) seagull2.SetActive(true);
         }
