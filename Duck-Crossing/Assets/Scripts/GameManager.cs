@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         if ((!Phone.Finished) & CarController.Finished)
         {
+            CarController.Finished = false;
             SceneManager.LoadSceneAsync("GameOver");
         }
     }
@@ -41,6 +43,10 @@ public class GameManager : MonoBehaviour
 
     public void retryLastLevel()
     {
+        CarController.Crashed = false;
+        Phone.Finished = false;
+        LevelTime.time = 0.0f;
+        Console.WriteLine("Current level: " +  currentLevel);
         SceneManager.LoadScene(currentLevel);
     }
 
