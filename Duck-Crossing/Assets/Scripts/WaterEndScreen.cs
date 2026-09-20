@@ -71,10 +71,7 @@ public class WaterEndScreen : MonoBehaviour
     IEnumerator ReloadScene()
     {
         yield return new WaitForSeconds(1.0f);
-        CarController.Crashed = false;
-        Phone.Finished = false;
-        LevelTime.time = 0.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        OtherSceneManager.ReloadScene();
     }
 
 
