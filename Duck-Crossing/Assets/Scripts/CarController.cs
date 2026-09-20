@@ -52,7 +52,7 @@ public class CarController : MonoBehaviour
         Finished = Time.time > TimeLimit;
 
         carButt.localPosition = new Vector3(
-            position / 2.6f * 0.7f,
+            position / 2.6f * 0.75f,
             carButt.localPosition.y,
             carButt.localPosition.z
         );
