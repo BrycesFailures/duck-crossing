@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public Phone phoneController;
 
+    bool faded = false;
+
     //public bool isFinished;
 
     // Start is called before the first frame update
@@ -33,14 +35,14 @@ public class GameManager : MonoBehaviour
         {
             CarController.Finished = false;
             Fade();
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine("LevelLose");
         }
 
         if (Phone.Finished)
         {
             Phone.Finished = false;
             Fade();
-            SceneManager.LoadScene("LevelWinScreen");
+            StartCoroutine("LevelWin");
         }
     }
     public void nextLevel()
@@ -63,9 +65,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentLevel);
     }
 
-    IEnumerator Fade()
+    IEnumerator LevelWin()
     {
-        yield return new WaitForSeconds(2.0f);
-        GameObject.Find("FadeIn").GetComponent<FadeIn>().StartFadeOut();
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("LevelWinScreen");
+    }
+
+    IEnumerator LevelLose()
+    {
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("GameOver");
+    }
+
+    void Fade()
+    {
+        if (!faded) GameObject.Find("FadeIn").GetComponent<FadeIn>().StartFadeOut();
+        faded = true;
     }
 }

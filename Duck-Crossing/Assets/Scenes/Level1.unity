@@ -5565,7 +5565,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 133602977}
   m_HandleRect: {fileID: 133602976}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10730,7 +10730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6c2d3a7680d1a4081bdd7db8a5059f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 90
+  TimeLimit: 5
   progressCarSprites:
   - {fileID: 21300000, guid: 6956fad87a4995943bf0e0cf84bb432f, type: 3}
   - {fileID: 21300000, guid: 069034491b5f14745bbae461ac7a6902, type: 3}
@@ -12468,6 +12468,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.998535, y: -0.0006023142}
+  m_AnchoredPosition: {x: 4499.999, y: -0.0006023142}
   m_SizeDelta: {x: -4500, y: 0}
   m_Pivot: {x: 0, y: 1}
