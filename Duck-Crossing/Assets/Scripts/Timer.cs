@@ -13,8 +13,8 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        int minutes = Mathf.FloorToInt(Time.time / 60.0f);
-        int seconds = Mathf.FloorToInt(Time.time % 60.0f);
+        int minutes = Mathf.FloorToInt(LevelTime.time / 60.0f);
+        int seconds = Mathf.FloorToInt(LevelTime.time % 60.0f);
 
         string str = "";
 

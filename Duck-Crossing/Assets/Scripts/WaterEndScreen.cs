@@ -27,6 +27,9 @@ public class WaterEndScreen : MonoBehaviour
             startTime = Time.time;
             GameObject.Find("_Main").GetComponent<AudioSource>().volume = 0.0f;
             Destroy(GameObject.Find("_Main").GetComponent<CarController>());
+            Camera.main.gameObject.GetComponent<VisualEffect>().Active = false;
+            Camera.main.gameObject.GetComponent<VisualEffect>().Target = 0.0f;
+            CarController.Force = Vector3.zero;
             AudioSystem.PlaySound("SFX/crash");
             GetComponent<SpriteRenderer>().enabled = true;
             StartCoroutine("Popup");

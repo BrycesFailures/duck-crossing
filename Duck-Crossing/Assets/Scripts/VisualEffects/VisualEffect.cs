@@ -9,6 +9,7 @@ public class VisualEffect : MonoBehaviour
     public float Amount = 1.0f;
     public float Target = 1.0f;
     public float Time_ = 120.0f;
+    public bool Active = true;
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -22,8 +23,9 @@ public class VisualEffect : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Amount += Time.deltaTime / Time_;
+            if (Active) Amount += Time.deltaTime / Time_;
             if (Target < Amount) Amount -= Time.deltaTime;
+            if (Amount < 0.0f) Target = 1.0f;
         }
         Amount = Mathf.Clamp01(Amount);
     }
