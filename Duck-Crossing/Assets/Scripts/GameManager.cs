@@ -32,12 +32,21 @@ public class GameManager : MonoBehaviour
         if ((!Phone.Finished) & CarController.Finished)
         {
             CarController.Finished = false;
-            SceneManager.LoadSceneAsync("GameOver");
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (Phone.Finished)
+        {
+            Phone.Finished = false;
+            SceneManager.LoadScene("LevelWinScreen");
         }
     }
     public void nextLevel()
     {
         currentLevel++;
+        CarController.Crashed = false;
+        Phone.Finished = false;
+        LevelTime.time = 0.0f;
         SceneManager.LoadScene(currentLevel);
     }
 
