@@ -32,12 +32,14 @@ public class GameManager : MonoBehaviour
         if ((!Phone.Finished) & CarController.Finished)
         {
             CarController.Finished = false;
+            Fade();
             SceneManager.LoadScene("GameOver");
         }
 
         if (Phone.Finished)
         {
             Phone.Finished = false;
+            Fade();
             SceneManager.LoadScene("LevelWinScreen");
         }
     }
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         CarController.Crashed = false;
         Phone.Finished = false;
         LevelTime.time = 0.0f;
+        Fade();
         SceneManager.LoadScene(currentLevel);
     }
 
@@ -56,11 +59,13 @@ public class GameManager : MonoBehaviour
         Phone.Finished = false;
         LevelTime.time = 0.0f;
         Console.WriteLine("Current level: " +  currentLevel);
+        Fade();
         SceneManager.LoadScene(currentLevel);
     }
 
-    public void winningScreen()
+    IEnumerator Fade()
     {
-
+        yield return new WaitForSeconds(2.0f);
+        GameObject.Find("FadeIn").GetComponent<FadeIn>().StartFadeOut();
     }
 }

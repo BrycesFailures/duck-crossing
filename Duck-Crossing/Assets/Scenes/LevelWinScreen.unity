@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857724508}
   - component: {fileID: 857724507}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MotherDuck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,8 +432,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857724506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.41, y: -1.98, z: 0}
-  m_LocalScale: {x: 0.23307543, y: 0.23169799, z: 1}
+  m_LocalPosition: {x: 0.53, y: -0.83, z: 0}
+  m_LocalScale: {x: 0.17340986, y: 0.16372214, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045191317}
   - component: {fileID: 1045191316}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BabyDuck1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,8 +516,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045191315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: -1.5831, z: 0}
-  m_LocalScale: {x: 0.3163938, y: 0.2707333, z: 1}
+  m_LocalPosition: {x: -0.59, y: -0.93, z: 0}
+  m_LocalScale: {x: 0.2579875, y: 0.24574462, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -600,8 +600,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399966028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0232, y: 0.0376, z: 0}
-  m_LocalScale: {x: 1.6954645, y: 1.7283521, z: 1}
+  m_LocalPosition: {x: -0.1, y: -0.01, z: 1}
+  m_LocalScale: {x: 1.71954, y: 1.7793385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -937,7 +937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f95c3660ac9cf243bfde807268a6429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 1493487064}
 --- !u!114 &1956655077
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,6 @@ public class LevelWin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInChildren<Text>().text = "You Yielded in " + Phone.FinishedTime + " Seconds!";
+        GetComponentInChildren<Text>().text = "You Yielded in " + Mathf.Round(Phone.FinishedTime) + " Seconds!";
     }
 }
