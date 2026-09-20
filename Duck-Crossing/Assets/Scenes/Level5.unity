@@ -3009,7 +3009,7 @@ MonoBehaviour:
   Shader: {fileID: 4800000, guid: 421af092e3859ff4d8b97f4b95064477, type: 3}
   Amount: 0
   Target: 1
-  Time_: 45
+  Time_: 75
   Active: 1
 --- !u!1 &520880540
 GameObject:
@@ -12535,6 +12535,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.998047, y: -0.0006023142}
+  m_AnchoredPosition: {x: 16.997559, y: -0.0006023142}
   m_SizeDelta: {x: -4500, y: 0}
   m_Pivot: {x: 0, y: 1}
