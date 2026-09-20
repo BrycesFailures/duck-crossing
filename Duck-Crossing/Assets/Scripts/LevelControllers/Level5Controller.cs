@@ -32,7 +32,7 @@ public class Level5Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         GameManager.currentLevel++;
-        OtherSceneManager.NextScene();
+        OtherSceneManager.FirstScene();
     }
 
     IEnumerator Fade()
