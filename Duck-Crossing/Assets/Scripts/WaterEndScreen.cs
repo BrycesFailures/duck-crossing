@@ -12,7 +12,6 @@ public class WaterEndScreen : MonoBehaviour
     Vector3 pos;
     float startTime = 0.0f;
     float soundTime = 0.92f;
-    float retryTime = 0.0f;
 
     private void Awake()
     {
@@ -43,18 +42,6 @@ public class WaterEndScreen : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, normal * 360 * 4.0f);
             transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(1.5f, 1.5f, 1.0f), Mathf.Pow(normal, 2.2f));
         }
-
-        if (retried)
-        {
-            Destroy(GameObject.Find("FadeIn").GetComponent<FadeIn>());
-            SpriteRenderer sr = GameObject.Find("FadeIn").GetComponent<SpriteRenderer>();
-            sr.color = new Color(
-                sr.color.r,
-                sr.color.g,
-                sr.color.b,
-                Time.time - retryTime
-            );
-        }
     }
 
 
@@ -62,8 +49,9 @@ public class WaterEndScreen : MonoBehaviour
     public void Retry()
     {
         if (!retried) StartCoroutine("ReloadScene");
+        AudioSystem.PlaySound("SFX/type");
         retried = true;
-        retryTime = Time.time;
+        GameObject.Find("FadeIn").GetComponent<FadeIn>().StartFadeOut();
     }
 
 
